@@ -28,26 +28,26 @@ CHECK_ROOT(){
     fi
 }
 
-mkdir -p $LOG_FOLDER &>>LOG_FILE_NAME
+mkdir -p $LOG_FOLDER &>>$LOG_FILE_NAME
 VALIDATE $? "Creating Logs Folder for DataBase-Server"
 
-echo "The $0 Script run at :$TIME_STAMP" &>>LOG_FILE_NAME
+echo "The $0 Script run at :$TIME_STAMP" &>>$LOG_FILE_NAME
 
-dnf install mysql-server -y &>>LOG_FILE_NAME
+dnf install mysql-server -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MySQL-Server"
 
-systemctl enable mysqld &>>LOG_FILE_NAME
+systemctl enable mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling the mysql"
 
-systemctl start mysqld &>>LOG_FILE_NAME
+systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "Starting the mysqld"
 
-mysql_secure_installation mysql.chenchudaws82s.online --set-root-pass ExpenseApp@1 -e  'show databases'; &>>LOG_FILE_NAME
+mysql_secure_installation mysql.chenchudaws82s.online --set-root-pass ExpenseApp@1 -e  'show databases'; &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
 then
   echo "Mysql password was not been setup" &>>$LOG_FILE_NAME
-  mysql_secure_installation --set-root-pass ExpenseApp@1 &>>LOG_FILE_NAME
+  mysql_secure_installation mysql.chenchudaws82s.online --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
   VALIDATE $? "Setting the password"
 else
   echo -e "MySql Password was already set $Y Skipping $N"

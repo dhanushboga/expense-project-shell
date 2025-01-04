@@ -33,31 +33,31 @@ echo "The $0 Script run at :$TIME_STAMP"
 mkdir -p $LOG_FOLDER
 VALIDATE $? "Creating the logs folder for Frond-End server"
 
-dnf install nginx -y &>>LOG_FILE_NAME
+dnf install nginx -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing the Nginx Server"
 
-systemctl enable nginx &>>LOG_FILE_NAME
+systemctl enable nginx &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling the Nginx Server"
 
-systemctl start nginx &>>LOG_FILE_NAME
+systemctl start nginx &>>$LOG_FILE_NAME
 VALIDATE $? "Starting the Nginx Server"
 
-rm -rf /usr/share/nginx/html/* &>>LOG_FILE_NAME
+rm -rf /usr/share/nginx/html/* &>>$LOG_FILE_NAME
 VALIDATE $? "Removing the existing content"
 
-curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>LOG_FILE_NAME
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOG_FILE_NAME
 VALIDATE $? "Downloading the Web server code"
 
-cd /usr/share/nginx/html &>>LOG_FILE_NAME
+cd /usr/share/nginx/html &>>$LOG_FILE_NAME
 VALIDATE $? "Changing the directory"
 
-unzip /tmp/frontend.zip &>>LOG_FILE_NAME
+unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "Unzipping the Frond-end code"
 
-cp /home/ec2-user/expense-project-shell/expense.conf /etc/nginx/default.d/expense.conf &>>LOG_FILE_NAME
+cp /home/ec2-user/expense-project-shell/expense.conf /etc/nginx/default.d/expense.conf &>>$LOG_FILE_NAME
 VALIDATE $? "Coping the content to conf file"
 
-systemctl restart nginx &>>LOG_FILE_NAME
+systemctl restart nginx &>>$LOG_FILE_NAME
 VALIDATE $? "Restarting the Nginx Server"
 
 
