@@ -2,11 +2,11 @@
 
 LOG_FOLDER="/var/log/database_logs"
 LOG_FILE=$(echo $0 | cut -d '.' -f1)
-TIME_STAMP=$(data +%Y-%m-%d-%H-%M-%S)
+TIME_STAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME=$LOG_FOLDER/$LOG_FILE-$TIME_STAMP.log
 
 
-USER_ID=(id -u)
+USER_ID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -14,7 +14,7 @@ N="\e[0m"
 
 CHECK_ROOT(){
 
-if [ USER_ID -ne 0 ]
+if [ $USER_ID -ne 0 ]
 then
    echo "Error::Please run this script under super access previlages"
    exit 1
