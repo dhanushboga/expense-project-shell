@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_FOLDER="/var/log/database-logs"
+LOG_FOLDER="/var/log/frontend-logs"
 LOG_FILE=$(echo $0 | cut -d '.' -f1)
 TIME_STAMP=$(date +%Y-%m-%d-%H-%m-%s)
 LOG_FILE_NAME=$LOG_FOLDER/$LOG_FILE-$TIME_STAMP.log
