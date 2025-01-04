@@ -28,6 +28,8 @@ CHECK_ROOT(){
     fi
 }
 
+echo "The $0 Script run at :$TIME_STAMP" &>>$LOG_FILE_NAME
+
 mkdir -p $LOG_FOLDER &>>$LOG_FILE_NAME
 VALIDATE $? "Creating Logs Folder for DataBase-Server"
 

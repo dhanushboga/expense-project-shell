@@ -28,7 +28,7 @@ CHECK_ROOT(){
     fi
 }
 
-echo "The $0 Script run at :$TIME_STAMP"
+echo "The $0 Script run at :$TIME_STAMP" &>>$LOG_FILE_NAME
 
 mkdir -p $LOG_FOLDER
 VALIDATE $? "Creating the logs folder for Frond-End server"

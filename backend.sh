@@ -28,10 +28,10 @@ CHECK_ROOT(){
     fi
 }
 
+echo "The $0 Script run at :$TIME_STAMP" &>>$LOG_FILE_NAME
+
 mkdir -p $LOG_FOLDER
 VALIDATE $? "Creating Logs Folder for Back-End Server"
-
-echo "The $0 Script run at :$TIME_STAMP" &>>$LOG_FILE_NAME
 
 dnf module disable nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "Disabling the nodeJS Older version"
