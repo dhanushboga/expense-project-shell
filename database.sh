@@ -47,7 +47,7 @@ mysql -h mysql.chenchudaws82s.online -u root -pExpenseApp@1 -e 'show databases;'
 if [ $? -ne 0 ]
 then
   echo "Mysql password was not been setup" &>>$LOG_FILE_NAME
-  mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
+  mysql_secure_installation --set-root-pass ExpenseApp@1
   VALIDATE $? "Setting the password"
 else
   echo -e "MySql Password was already set $Y Skipping $N"
